@@ -1,24 +1,91 @@
-# README
+# 開発環境
+- Ruby 2.5.1
+- Rails 5.2.4.1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# kabu-talk DB設計
 
-Things you may want to cover:
+## usersテーブル
+|Column|Type|Options|
+|------|----|———|
+|name|string|null: false, unique: true, index: true|
+|email|string|null: false|
+|password|string|null: false|
+|text|text||
+### Association
+- has_many :posts
+- has_many :predictions
+- has_many :forum_users
+- has_many :forums, through: :forum_users
 
-* Ruby version
 
-* System dependencies
+## predictionsテーブル
+|Column|Type|Options|
+|------|----|———|
+|stockname|string|null: false, index: true|
+|buyorsell|integer|null: false|
+|time|integer|null: false|
+|text|text||
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :likes_pred
 
-* Configuration
 
-* Database creation
+## commentsテーブル
+|Column|Type|Options|
+|------|----|———|
+|text|text|null: false|
+|emotion|integer||
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to :prediction
 
-* Database initialization
 
-* How to run the test suite
+## postsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|image|text||
+|user|references|null: false, foreign_key: true|
+|forum|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :forum
+- has_many :likes_posts
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## forumsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, unique: true|
+### Association
+- has_many :posts
+- has_many :forum_users
+- has_many :forums, through: :forum_users
 
-* ...
+
+## forum_usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|forum|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :forum
+
+
+## likes-postsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post|references|null: false, foreign_key: true|
+### Association
+- belongs_to :post
+
+
+## likes-predテーブル
+|Column|Type|Options|
+|------|----|-------|
+|prediction|references|null: false, foreign_key: true|
+### Association
+- belongs_to :prediction
