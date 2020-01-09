@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index 
-    @users = User.where.not(id: current_user.id).where('name LIKE(?)', "%#{params[:keyword]}%")
-  end
-
   def edit
   end
 
@@ -20,5 +16,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
-
 end
