@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :forum_users
   has_many :forums, through: :forum_users
+  has_many :posts
 end

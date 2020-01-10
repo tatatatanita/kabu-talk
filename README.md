@@ -46,7 +46,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|image|text||
+|image|string||
 |user|references|null: false, foreign_key: true|
 |forum|references|null: false, foreign_key: true|
 ### Association

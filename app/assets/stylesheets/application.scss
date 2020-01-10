@@ -1,4 +1,8 @@
-// colors.scssとflash.scssをインポート
+@import "font-awesome";
+@import "config/reset";
 @import "config/colors";
+@import "modules/side_bar";
+@import "modules/user";
 @import "modules/flash";
-@import "forums";
+@import "modules/forum";
+@import "index.scss";
