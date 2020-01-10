@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'users#edit'
+  root 'forums#index'
   resources :users, only: [:edit, :update]
-  resources :forums, only: [:new, :create, :edit, :update]
+  resources :forums, only: [:index, :new, :create, :edit, :update]
 end

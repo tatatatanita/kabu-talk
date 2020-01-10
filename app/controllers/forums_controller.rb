@@ -1,8 +1,12 @@
 class ForumsController < ApplicationController
 
+  def index
+  end
+
   def new
     @forum = Forum.new
     @forum.users << current_user
+    @members = @forum.users
   end
 
   def create
