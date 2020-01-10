@@ -1,0 +1,4 @@
+=form_for @forum do |f|
+  = f.text_field :name, class: "chat-forum-form__input", placeholder: "企業名を入力してください"
+  = f.collection_check_boxes :user_ids, User.all, :id, :name
+  = f.submit "Save", class: "chat-forum-form__action-btn"

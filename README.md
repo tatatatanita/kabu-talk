@@ -58,7 +58,7 @@
 ## forumsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|null: false, unique: true, index: true|
 ### Association
 - has_many :posts
 - has_many :forum_users
