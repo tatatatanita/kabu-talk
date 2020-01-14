@@ -1,9 +1,9 @@
 .side-bar {
   width: 300px;
-  color: white;
+  color: #000000;
   float: left;
   .header {
-    background-color: #253141;
+    background-color: #FFAD90;
     height: 100px;
     display: flex;
     align-items: center;
@@ -33,16 +33,16 @@
 
 .forums {
   height: calc(100vh - 100px);
-  background-color: #2f3e51;
+  background-color: #ADD8E6;
   padding: 20px 20px 0;
   overflow: scroll;
   .forum {
     text-decoration: none;
     margin-bottom: 40px;
-    color: white;
+    color: #000000;
     .item {
       text-decoration: none;
-      color: white;
+      color:#000000;
     }
     &__name {
       font-size: 15px;

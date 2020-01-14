@@ -1,3 +1,26 @@
-.wrapper
-  = render "devise/shared/side_bar"
-  = render "main_chat"
+.flash-box
+  .wrapper
+    -# = render 'devise/shared/side_bar'
+    .chat-main
+      .main-header
+        .main-header__left-box
+          %h2.main-header__left-box__current-forum{ data: {forum: {id: params[:forum_id]}} } 
+            = @forum.name
+          %ul.main-header__left-box__member-list
+            Member：
+            - @members.each do |member|
+              = member.name
+        = link_to edit_forum_path(params[:forum_id]) do
+          .main-header__edit-btn Edit
+      .posts
+        = render @posts
+      .form
+        = form_for [@forum, @post] do |f|
+          = f.text_field :text, class: 'form__post', placeholder: '  コメントする'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'paperclip', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit '投稿する', class: 'form__submit'
+
+    = render 'devise/shared/side_bar'
